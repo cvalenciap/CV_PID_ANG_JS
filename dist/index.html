@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" ng-app="PideWeb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="img/favicon.ico" rel="shortcut icon">
+
+	<title>PIDE+ | Consulta Virtual</title>
+  <!-- STYLES -->
+  <link rel="stylesheet" href="lib/css/main.min.css"/>
+
+  <link rel="stylesheet" type="text/css" href="css/common.css">
+
+  <!-- SCRIPTS -->
+  <script src="lib/js/main.min.js"></script>
+  <!-- Custom Scripts -->
+  <script type="text/javascript" src="env.js"></script>
+  <script type="text/javascript" src="js/dashboard.min.js"></script>
+  <script type="text/javascript" src="https://rawgithub.com/eligrey/FileSaver.js/master/FileSaver.js"></script>
+</head>
+<body ng-controller="MasterCtrl">
+  <!-- Page Wrapper -->
+  <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper" data-access-level='accessLevels.common'>
+
+      <ul class="sidebar drop_menu" >
+        <li class="sidebar-main">
+          <a ng-click="toggleSidebar()">
+            PIDE+
+            <span class="menu-icon glyphicon glyphicon-menu-hamburger"></span>
+          </a>
+        </li>
+
+        <!--li class="sidebar-list" data-access-level='accessLevels.common'-->
+        <li class="sidebar-list"  ng-hide="consultas.length == 0">
+          <a>Consultas<span class="menu-icon fa fa-address-card"></span></a>
+          <ul>
+            <!--li class="sidebar-list" data-access-level='accessLevels.common' ng-repeat="consOpc in consultas"-->
+            <li class="sidebar-list" ng-repeat="consOpc in consultas">
+              <a ui-sref="{{consOpc.ruta}}">{{consOpc.nombre}}</a>
+            </li> 
+          </ul>
+        </li>
+
+        <!--li class="sidebar-list" data-access-level='accessLevels.admin'-->
+        <li class="sidebar-list" ng-hide="auditoria.length == 0">
+          <a>Auditoria<span class="menu-icon fa fa-tasks"></span></a>
+          <ul>
+            <!--li class="sidebar-list" data-access-level='accessLevels.admin' ng-repeat="audOpc in auditoria"-->
+            <li class="sidebar-list" ng-repeat="audOpc in auditoria">
+              <a ui-sref="{{audOpc.ruta}}">{{audOpc.nombre}}</a>
+            </li> 
+          </ul>
+        </li>
+      
+        <li class="sidebar-list" >
+          <a ng-click="logout();">Cerrar Sesión <span class="menu-icon fa fa-sign-out"></span></a>
+        </li>
+      </ul>
+    </div>
+    <!-- End Sidebar -->
+
+    <!--  Content Wrapper -->
+    <div id="content-wrapper">
+      <!-- Page Content -->
+      <div class="page-content">
+
+        <!-- Header Bar -->
+        <div class="row header" data-access-level='accessLevels.common'>
+          <!-- Header -->
+          <div class="col-xs-12">
+            <!-- Logo FMV  -->
+            <img src="img/logoFmv.jpg" class="logo-header">
+            <!-- Usuario -->
+            <div class="user pull-right">
+              <div class="item dropdown">
+                <a ui-sref="common.dashboard" class="dropdown-toggle">
+                  <img src="img/avatar.jpg">
+                </a>
+              </div>
+              <div  class="username">
+                {{user.username}}
+              </div>
+            </div>
+          </div>
+
+          <!--  Titulo -->
+          <div class="col-xs-12">
+            <div class="meta">
+              <div class="page">
+                <span ng-bind="appTitle"></span>
+              </div>
+              <div class="breadcrumb-links">
+                <a class="text-link" ui-sref="common.dashboard">Home</a> / <span ng-bind="appTitle"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Header Bar -->
+
+        <!-- Main Content -->
+        <div ui-view></div>
+      </div>
+      <!-- End Page Content -->
+    </div>
+    <!-- End Content Wrapper -->
+
+    <!-- Footer -->
+    <footer data-access-level='accessLevels.common'>
+      <div class="logo-footer">
+        <a ui-sref="common.dashboard">
+          <img src="img/logoFmvFooter.jpg" class="logo-img-footer" alt="Fondo MIVIVIENDA"/>
+        </a>
+      </div>
+
+      <div class="direction-footer">
+        <p>Fondo MIVIVIENDA S.A.</p>
+        <p>Av. Paseo de la República 3121 - San Isidro - Lima - Perú</p>
+        <p>Teléfono: (511) 2117373 - Línea gratuita para consultas de productos: 0800-12200</p>
+      </div>
+
+      <!--div class="right clearfix">
+        <div class="w3c">
+          <a href="" target="_blank"><img src="img/w3c-css.jpg" width="58" height="21" alt="W3C CSS Validator"></a>
+          <a href="" target="_blank"><img src="img/w3c-html.jpg" width="58" height="21" alt="W3C HTML Validator"></a>
+        </div>
+      </div-->
+    </footer>
+    <!-- End Footer -->
+
+  </div>
+  <!-- End Page Wrapper -->
+</body>
+</html>

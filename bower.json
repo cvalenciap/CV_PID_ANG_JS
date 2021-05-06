@@ -1,0 +1,28 @@
+{
+  "name": "pide_front",
+  "version": "0.0.1",
+  "description": "Frontend de Pide+",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "rdash-ui": "^1.0.1",
+    "angular": "*",
+    "angular-bootstrap": "^2.5.0",
+    "angular-ui-router": "^1.0.6",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "ng-table": "~0.5.4",
+    "angular-ui-utils": "bower",
+    "angular-spinkit": "^0.3.4",
+    "ngstorage": "^0.3.11",
+    "moment": "momentjs#^2.18.1",
+    "jquery": "^3.2.1"
+  }
+}
